@@ -38,7 +38,7 @@ if uploaded_file is not None:
   
   st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
   for index, row in detect_class.iterrows():
-    if detect_class['xmin'] < c:
+    if row['xmin'] < c:
       bruh += 1
   st.write('number of people on volleyball court : ' + str(bruh))
   #st.success(detect_class)
