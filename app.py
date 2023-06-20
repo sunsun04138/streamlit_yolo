@@ -36,10 +36,8 @@ if uploaded_file is not None:
   #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
   
   st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
-  if detect_class[xmin] < 1500:
+  if detect_class[detect_class['xmin'] < 1500]:
     x += 1
-
-  st.write("number of people on volleyball court : ",x)
   
   #st.success(detect_class)
   
@@ -51,4 +49,6 @@ if uploaded_file is not None:
       im_base64.save(outputpath)
       img_ = Image.open(outputpath)
       st.image(img_, caption='Model Prediction(s)')
+
+st.write("number of people on volleyball court : ",x)
 
