@@ -23,7 +23,8 @@ if uploaded_file is not None:
 
   imgRGB = cv2.cvtColor(image , cv2.COLOR_BGR2RGB)
   #st.image(imgRGB)
-
+  t = imgRGB.shape[1]
+  c = t/2
   st.write("")
   st.write("Detecting...")
   result = model(imgRGB, size=600)
@@ -36,7 +37,10 @@ if uploaded_file is not None:
   #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
   
   st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
-  
+  for index, row in detect_class.interrows():
+    if['xmin'] < c:
+      bruh += 1
+  st.write('number of people on volleyball court : ' + str(bruh))
   #st.success(detect_class)
   
   outputpath = 'output.jpg'
