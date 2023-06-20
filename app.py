@@ -5,6 +5,7 @@ import os
 from PIL import Image
 import numpy as np
 import torch, json , cv2 , detect
+bruh = 0
 
 
 st.title("Human Detection")
@@ -26,7 +27,7 @@ if uploaded_file is not None:
   st.write("")
   st.write("Detecting...")
   result = model(imgRGB, size=600)
-  
+
   detect_class = result.pandas().xyxy[0] 
   
   #labels, cord_thres = detect_class[:, :].numpy(), detect_class[:, :].numpy()
@@ -35,8 +36,10 @@ if uploaded_file is not None:
   #0  148.605362   0.0    1022.523743  818.618286    0.813045      2      turtle
   
   st.code(detect_class[['name', 'xmin','ymin', 'xmax', 'ymax']])
-  
-  
+  if detect_class[xmin] < 1500:
+    x += 1
+
+  st.write("number of people on volleyball court : ",x)
   
   #st.success(detect_class)
   
